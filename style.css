@@ -6,8 +6,6 @@
 
     --clr-text-dark: var(--clr-1);
     --clr-text-light: var(--clr-4);
-
-    --menu-item-padding: 0.7em 1em;
 }
 
 * {
@@ -46,7 +44,7 @@ nav ul li a {
 }
 
 nav ul li a, #menu_button {
-    padding: var(--menu-item-padding);
+    padding: 0.7em 1em;
     color: var(--clr-text-dark);
     text-decoration: none;
     font-weight: bold;
@@ -276,7 +274,6 @@ input:not([type=submit], [type=checkbox]):focus, textarea:focus {
 
 input[type=checkbox] {
     margin: 1em 0;
-    zoom: 1.5;
 }
 
 input[type=submit] {
@@ -313,4 +310,13 @@ footer {
     color: var(--clr-text-dark);
     text-align: center;
     padding: 1em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.audit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }
