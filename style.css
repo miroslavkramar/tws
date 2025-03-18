@@ -1,7 +1,7 @@
 :root {
     --clr-1: #0f0f1b;
-    --clr-2: #565a75;
-    --clr-3: #c6b7be;
+    --clr-3: #565a75;
+    --clr-2: #c6b7be;
     --clr-4: #fafbf6;
 
     --clr-text-dark: var(--clr-1);
@@ -15,6 +15,7 @@
     padding: 0;
     box-sizing: border-box;
     /* border: 1px solid red; */
+    font-family: Arial, sans-serif;
 }
 
 html {
@@ -23,10 +24,8 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    
     min-height: 100vh;
     background-color: white;
 }
@@ -44,30 +43,31 @@ nav ul {
 
 nav ul li a {
     display: inline-block;
+}
+
+nav ul li a, #menu_button {
     padding: var(--menu-item-padding);
-    color: var(--clr-text-light);
+    color: var(--clr-text-dark);
     text-decoration: none;
+    font-weight: bold;
 }
 
 #menu_button {
     border: none;
     text-align: left;
-    text-decoration: none;
     font-size: medium;
     background-color: var(--clr-2);
-
     display: none;
-    padding: var(--menu-item-padding);
     cursor: pointer;
-    color: var(--clr-text-light);
     width: 100%;
 }
 
 nav ul li a:hover, nav ul li a:active, #menu_button:hover, #menu_button:active {
     background-color: var(--clr-1);
+    color: var(--clr-text-light);
 }
 
-@media(max-width: 600px){
+@media(max-width: 800px){
     #menu_button {
         display: block;
     }
@@ -146,20 +146,13 @@ main section p {
 
 .section-content-container {
     display: flex;
+    gap: 1em;
 }
 
-.section-content-left, .section-content-right {
+.section-content-column {
     display: flex;
     flex-direction: column;
     width: 50%;
-}
-
-.section-content-left {
-    padding-right: 1em;
-}
-
-.section-content-right {
-    padding-left: 1em;
 }
 
 .grid-container {
@@ -170,11 +163,23 @@ main section p {
 }
 
 .grid-item {
+    display: grid;
     padding: 2em;
     background-color: var(--clr-1);
     color: var(--clr-text-light);
     border-radius: 5px;
     text-align: center;
+}
+
+.grid-item a {
+    align-self: flex-end;
+    text-decoration: underline var(--clr-4);
+    color: var(--clr-text-light);
+    font-weight: bold;
+}
+
+.grid-item a:hover, .grid-item a:active {
+    color: var(--clr-2);
 }
 
 .list ul, .list ol {
@@ -191,6 +196,100 @@ img {
     object-fit: cover;
 }
 
+.table_container {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    min-width: 7em;
+    text-align: center;
+    padding: 0.5em 0.25em;
+    background-color: var(--clr-2);
+}
+
+.table td {
+    text-align: left;
+    padding: 0.25em;
+}
+
+.table, .table th, .table td{
+    border: 1px solid var(--clr-1);
+}
+
+form {
+    color: var(--clr-text-light);
+}
+
+legend {
+    padding: 0 0.25em;
+}
+
+fieldset {
+    padding: 1em;
+    border: 1px solid var(--clr-4);
+}
+
+.form-row-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+}
+
+.form-field-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 1em;
+}
+
+.form-checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+}
+
+textarea, input {
+    border-radius: 0;
+    border: 1px solid var(--clr-4);
+    color: var(--clr-text-light);
+}
+
+input:not([type=submit], [type=checkbox]), textarea {
+    padding: 0.5em;
+    background-color: transparent;
+}
+
+input:not([type=submit], [type=checkbox]):focus, textarea:focus {
+    outline: 1px solid var(--clr-4);
+}
+
+input[type=checkbox] {
+    margin: 1em 0;
+    zoom: 1.5;
+}
+
+input[type=submit] {
+    padding: 1em;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+input[type=submit]:hover {
+    color: var(--clr-text-dark);
+    background-color: var(--clr-4);
+}
+
 @media(max-width: 1000px){
     .section-container {
         width: 90%;
@@ -198,18 +297,20 @@ img {
     .section-content-container {
         flex-direction: column;
     }
-    .section-content-left, .section-content-right {
+    .section-content-column {
         width: 100%;
-        padding: 0;
     }
-    .section-content-left {
-        padding-bottom: 1em;
+}
+
+@media(max-width: 600px) {
+    .form-row-container {
+        flex-direction: column;
     }
 }
 
 footer {
     background: var(--clr-2);
-    color: var(--clr-text-light);
+    color: var(--clr-text-dark);
     text-align: center;
     padding: 1em;
 }
